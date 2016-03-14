@@ -16,7 +16,7 @@ class Book(models.Model):
 	
 	def __str__ (self):
 		""" Function doc """
-		return "{} by {}".format(self.title, self.authors())
+		return "{} by {}".format(self.title, self.list_authors())
 		
 	def list_authors (self):
 		""" Function doc """
