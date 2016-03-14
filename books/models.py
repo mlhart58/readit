@@ -1,4 +1,5 @@
-from django.db import models
+from	django.db							import models
+from	django.utils.timezone	import now
 
 # Create your models here.
 
@@ -15,7 +16,23 @@ class Book(models.Model):
 	
 	def __str__ (self):
 		""" Function doc """
-		return self.title
+		return "{} by {}".format(self.title, self.authors())
+		
+	def list_authors (self):
+		""" Function doc """
+		return ", ".join([author.name for author in self.authors.all()])
+	
+	def save (self, *args, **kwargs):
+		""" Function doc """
+		if (self.review and self.date_reviewed is None):
+			self.date_reviewed = now()
+		super(Book, self).save(*args, **kwargs)
+		"""
+		You need to call this super class method to do the actual "save"
+		You also need to call this "after" the work you want to save.
+		if you have something to do after the super/save takes place, 
+		add that code after the super/save call
+		"""		
 		
 
 class Author(models.Model):
