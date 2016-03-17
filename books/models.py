@@ -1,5 +1,6 @@
-from	django.db							import models
-from	django.utils.timezone	import now
+from	django.core.urlresolvers	import	reverse
+from	django.db									import models
+from	django.utils.timezone			import now
 
 # Create your models here.
 
@@ -47,4 +48,8 @@ class Author(models.Model):
 		""" Function doc """
 		return self.name
 		
-	
+	def get_absolute_url (self):
+		""" Function doc """
+		return reverse(	'author-detail',
+										kwargs={'pk': self.pk})
+		

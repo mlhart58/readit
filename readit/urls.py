@@ -18,7 +18,8 @@ from django.contrib import admin
 from	books.views	import	(
 	AuthorDetail, AuthorList, 
 	BookDetail, list_books,
-	review_book, ReviewList
+	review_book, ReviewList,
+	CreateAuthor
 )
 
 urlpatterns = [
@@ -32,6 +33,9 @@ urlpatterns = [
 	url(r'^books/(?P<pk>[-\w]+)/$',
 			BookDetail.as_view(),
 			name='book-detail'),
+	url(r'^authors/add/$',
+			CreateAuthor.as_view(),
+			name='add-author'),
 	url(r'^authors/(?P<pk>[-\w]+)/$',
 			AuthorDetail.as_view(),
 			name='author-detail'),
