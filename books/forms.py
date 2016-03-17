@@ -11,6 +11,7 @@ class ReviewForm(forms.Form):
 		label='Favourite?',
 		help_text='In your top 100 books of all time?',
 		required=False,
+		initial=False
 	)
 	
 	review = forms.CharField(
@@ -21,3 +22,11 @@ class ReviewForm(forms.Form):
 			'min_length': 'Please write at least 300 characters (you have written %(show_value)s)'
 		}
 	)
+
+
+class BookForm(forms.ModelForm):
+	"""
+	"""
+	class Meta:
+		model 	=	Book
+		fields	=	['title', 'authors']

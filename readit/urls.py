@@ -18,7 +18,7 @@ from django.contrib import admin
 from	books.views	import	(
 	AuthorDetail, AuthorList, 
 	BookDetail, list_books,
-	review_book, review_books
+	review_book, ReviewList
 )
 
 urlpatterns = [
@@ -36,7 +36,7 @@ urlpatterns = [
 			AuthorDetail.as_view(),
 			name='author-detail'),
 	url(r'^review/$', 
-			review_books, 
+			ReviewList.as_view(), 
 			name='review-books'),
 	url(r'^review/(?P<pk>[-\w]+)/$',
 			review_book, 
