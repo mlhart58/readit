@@ -30,7 +30,7 @@ class BookForm(forms.ModelForm):
 	"""
 	class Meta:
 		model 	=	Book
-		fields	=	['title', 'authors']
+		fields	=	['title', 'authors', 'reviewed_by']
 		
 	def clean (self):
 		"""

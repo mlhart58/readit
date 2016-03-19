@@ -6,7 +6,8 @@ class BookAdmin(admin.ModelAdmin):
 	""" Class doc """
 	fieldsets = [
 		("Book Details", {"fields": ["title", "authors"]}),
-		("Review", {"fields": ["is_favourite", "review", "date_reviewed"]}),
+		("Review", {"fields": 
+			["is_favourite", "review", "reviewed_by", "date_reviewed"]}),
 	]
 	
 	readonly_fields = ("date_reviewed",)

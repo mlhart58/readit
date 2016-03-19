@@ -93,7 +93,8 @@ def review_book(request, pk):
 			# If Boolean is not required (i.e. you mark it true)
 			# then is will not be in 'cleaned_data'
 			# book.is_favourite = form.cleaned_data['is_favourite']
-			book.review = form.cleaned_data['review']
+			book.review				= form.cleaned_data['review']
+			book.reviewed_by	= request.user
 			book.save()
 			
 			return redirect('review-books')
