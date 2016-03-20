@@ -1,12 +1,13 @@
 # from	django.http				import	HttpResponse
-from	django.core.urlresolvers	import	reverse
-from	django.db.models					import	Count
-from	django.shortcuts					import	(	redirect,
-																					render, 
-																					get_object_or_404
-																				)
-from	django.views.generic			import	DetailView, View
-from	django.views.generic.edit	import	CreateView
+from	django.contrib.auth.decorators	import	login_required
+from	django.core.urlresolvers				import	reverse
+from	django.db.models								import	Count
+from	django.shortcuts								import	(	redirect,
+																								render, 
+																								get_object_or_404
+																							)
+from	django.views.generic						import	DetailView, View
+from	django.views.generic.edit				import	CreateView
 
 from	.forms	import	ReviewForm, BookForm
 from	.models	import	Author, Book
@@ -78,7 +79,9 @@ class ReviewList(View):
 		}
 		return render(request, "list-to-review.html", context)			
 	#End - def post(self, request):
-	
+
+
+@login_required
 def review_book(request, pk):
 	"""
 	Review an individual book
