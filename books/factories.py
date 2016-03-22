@@ -47,11 +47,11 @@ class BookFactory(factory.django.DjangoModelFactory):
 				self.authors.add(authors)
 	
 	
-class ReviewFactory(factory.django.DjangoModelFactory):
+class ReviewFactory(BookFactory):
 	"""
 	Creates a book with a review
 	"""
 	review 				= factory.Faker('text', max_nb_chars=400)
-	date_reviewed	=	now
+	date_reviewed	=	now()
 	reviewed_by		= factory.SubFactory(UserFactory)
 	
